@@ -76,7 +76,7 @@ exports.webhookCheckout = catchAsync(async (req, res, next) => {
       process.env.STRIPE_Webhook
     );
   } catch (err) {
-    res.status(400).send(`Webhook Error: ${err.message}`);
+    res.status(400).send(`Webhook Errors: ${err.message}`);
     return;
   }
 
