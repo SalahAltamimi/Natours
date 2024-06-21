@@ -73,7 +73,7 @@ exports.webhookCheckout = catchAsync(async (req, res, next) => {
     event = stripe.webhooks.constructEvent(
       req.body,
       sig,
-      'we_1PUBqLKdu5i7flk33HWxXvhC'
+      'whsec_YRcyvlb8K2pqexzOBDUqH2p3esaDrdY1'
     );
   } catch (err) {
     res.status(400).send(`Webhook Errors: ${err.message}`);
