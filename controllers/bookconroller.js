@@ -56,13 +56,13 @@ exports.CheckOuts = catchAsync(async (req, res, next) => {
 
 //   res.redirect(req.originalUrl.split('?')[0]);
 // });
-const createBookingCheckout = async (session) => {
-  console.log(session);
-  const tour = (await Users.findOne({ email: session.customer_email })).id;
-  const user = (await Users.findOne({ email: session.customer_email })).id;
-  const price = session.data.amount_total / 100;
-  await Booking.create({ tour, user, price });
-};
+// const createBookingCheckout = async (session) => {
+//   console.log(session);
+//   const tour = (await Users.findOne({ email: session.customer_email })).id;
+//   const user = (await Users.findOne({ email: session.customer_email })).id;
+//   const price = session.data.amount_total / 100;
+//   await Booking.create({ tour, user, price });
+// };
 
 exports.webhookCheckout = catchAsync(async (req, res, next) => {
   const sig = req.headers['stripe-signature'];
@@ -83,7 +83,7 @@ exports.webhookCheckout = catchAsync(async (req, res, next) => {
   console.log(`Unhandled event type ${event.type}`);
 
   // if (event.type === 'checkout.session.completed')
-  createBookingCheckout(event.data.object);
+  // createBookingCheckout(event.data.object);
 
   res.status(200).json({ received: true });
 });
