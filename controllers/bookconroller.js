@@ -19,7 +19,11 @@ exports.CheckOuts = catchAsync(async (req, res, next) => {
     success_url: `${req.protocol}://${req.get('host')}/`,
     cancel_url: `${req.protocol}://${req.get('host')}/tour/${tour.slugs}`,
     customer_email: req.user.email,
-    metadata: { tourId: tour._id, userId: req.user._id, price: tour.price },
+    metadata: {
+      tourId: tour._id.toString(),
+      userId: req.user._id.toString(),
+      price: tour.price,
+    },
     client_reference_id: req.user.id,
     mode: 'payment',
     line_items: [
